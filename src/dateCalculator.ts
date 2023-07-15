@@ -9,7 +9,20 @@ type DateFunctions = {
 class DateCalculator implements DateFunctions {
 
   parse(dateString: DateOperation): Date {
-    return new Date(Date.now());
+    const now = new Date(Date.now());
+    if (dateString === "now") {
+      return now;
+    }
+
+    if (dateString === "now+1d") {
+      return new Date(now.setDate(now.getDate() + 1))
+    }
+
+    if (dateString === "now-1d") {
+      return new Date(now.setDate(now.getDate() - 1))
+    }
+
+    return new Date();
   }
 
   stringify(date: Date): DateOperation {

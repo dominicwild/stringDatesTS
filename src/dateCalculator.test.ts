@@ -38,6 +38,8 @@ describe('Date Calculator Tests', function () {
 
   it.each<[DateOperation, string]>([
     ["now", "2020-05-01T00:00:00.000Z"],
+    ["now+1d", "2020-05-02T00:00:00.000Z"],
+    ["now-1d", "2020-04-30T00:00:00.000Z"],
   ])
   ("Operation %s gives date %s", (opString: DateOperation, expectedDateString) => {
     const date = dateCalculator.parse(opString);
