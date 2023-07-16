@@ -41,9 +41,30 @@ describe('Date Calculator Tests', function () {
     ["now", "2020-05-01T00:00:00.000Z"],
     ["now+1d", "2020-05-02T00:00:00.000Z"],
     ["now-1d", "2020-04-30T00:00:00.000Z"],
+    ["now+1y", "2021-05-01T00:00:00.000Z"],
+    ["now-1y", "2019-05-01T00:00:00.000Z"],
+    ["now+1h", "2020-05-01T01:00:00.000Z"],
+    ["now-1h", "2020-04-30T23:00:00.000Z"],
+    ["now+1s", "2020-05-01T00:00:01.000Z"],
+    ["now-1s", "2020-04-30T23:59:59.000Z"],
+    ["now+1m", "2020-05-01T00:01:00.000Z"],
+    ["now-1m", "2020-04-30T23:59:00.000Z"],
+    ["now+1M", "2020-06-01T00:00:00.000Z"],
+    ["now-1M", "2020-04-01T00:00:00.000Z"],
+    ["now+1w", "2020-05-08T00:00:00.000Z"],
+    ["now-1w", "2020-04-24T00:00:00.000Z"],
     ["now-1d+1d", "2020-05-01T00:00:00.000Z"],
   ])
   ("Operation %s gives date %s", (opString: DateOperationCommand, expectedDateString) => {
+    const date = dateCalculator.parse(opString);
+    const expectedDate = new Date(Date.parse(expectedDateString));
+    expect(date).toEqual(expectedDate)
+  })
+
+  it.each<[DateOperationCommand, string]>([
+    ["now-1y", "2019-05-01T00:00:00.000Z"],
+  ])
+  ("Test", (opString: DateOperationCommand, expectedDateString) => {
     const date = dateCalculator.parse(opString);
     const expectedDate = new Date(Date.parse(expectedDateString));
     expect(date).toEqual(expectedDate)
