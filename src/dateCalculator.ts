@@ -233,7 +233,7 @@ class DateCommand {
         return this.roundDate(upperBound, dateInMs, lowerBound);
       }
       case "w": {
-        const dayOfWeek = (dateAsDate.getDay() + 1) % 7
+        const dayOfWeek = (dateAsDate.getUTCDay() - 1) % 7
         const upperBound = Date.UTC(currentDate.year, currentDate.month, currentDate.day + (6 - dayOfWeek));
         const lowerBound = Date.UTC(currentDate.year, currentDate.month, currentDate.day - dayOfWeek);
 

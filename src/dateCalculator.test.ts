@@ -82,6 +82,8 @@ describe('Date Calculator Tests', function () {
     ["now/m", "2020-07-01T00:22:12.000Z", "2020-07-01T00:22:00.000Z"],
     ["now/s", "2020-07-01T00:00:25.600Z", "2020-07-01T00:00:26.000Z"],
     ["now/s", "2020-07-01T00:00:25.300Z", "2020-07-01T00:00:25.000Z"],
+    ["now/w", "2020-07-01T00:00:25.300Z", "2020-06-29T00:00:00.000Z"],
+    ["now/w", "2020-07-03T00:00:25.300Z", "2020-07-05T00:00:00.000Z"],
   ])
   ("%s rounds date to %s", (opString: DateOperationCommand, currentDateString, expectedDateString) => {
     const now = new Date(currentDateString);
